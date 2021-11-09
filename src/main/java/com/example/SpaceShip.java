@@ -15,8 +15,6 @@ public class SpaceShip {
         setCenterOfMass(centerOfMass);
     }
 
-    
-
     private Module[] tabModules;
     private double angularMomentum;
     private Vector linearMomentum;
@@ -32,7 +30,7 @@ public class SpaceShip {
         return this.centerOfMass;
     }
 
-    public void setCenterOfMass(CenterOfMass centerOfMass) {
+    private void setCenterOfMass(CenterOfMass centerOfMass) {
         this.centerOfMass = centerOfMass;
     }
 
