@@ -2,8 +2,8 @@ package com.example;
 
 public class Vector {
     public Vector() {
-        setI(DEFAULT_I);
-        setJ(DEFAULT_Y);
+        this(DEFAULT_I,
+        DEFAULT_Y);
     }
 
     public Vector(double i, double j) {
