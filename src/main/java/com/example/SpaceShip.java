@@ -1,7 +1,6 @@
 package com.example;
 
 public class SpaceShip {
-
     public SpaceShip() {
         this(DEFAULT_TAB_MODULES,
         DEFAULT_ANGULAR_MOMENTUM,
