@@ -1,8 +1,8 @@
 package com.example;
 public class Point {
     public Point() {
-        setX(DEFAULT_X);
-        setY(DEFAULT_Y);
+        this(DEFAULT_X,
+        DEFAULT_Y);
     }
 
     public Point(double x, double y) {
