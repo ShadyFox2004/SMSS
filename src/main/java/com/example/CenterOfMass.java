@@ -2,8 +2,9 @@ package com.example;
 
 public class CenterOfMass extends Point {
     public CenterOfMass() {
-        super();
-        setMass(DEFAULT_MASS);    
+        this(Point.DEFAULT_X,
+        Point.DEFAULT_Y,
+        DEFAULT_MASS);
     }
 
     public CenterOfMass(double x, double y, double mass) {
