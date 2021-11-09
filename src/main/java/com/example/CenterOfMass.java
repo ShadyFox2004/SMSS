@@ -2,7 +2,8 @@ package com.example;
 
 public class CenterOfMass extends Point {
     public CenterOfMass() {
-        setMass(DEFAULT_MASS);
+        super();
+        setMass(DEFAULT_MASS);    
     }
 
     public CenterOfMass(double x, double y, double mass) {
