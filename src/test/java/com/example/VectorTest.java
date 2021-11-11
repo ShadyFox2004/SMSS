@@ -47,7 +47,7 @@ public class VectorTest {
         Vector firstVector = new Vector(0.0, 1.0);
 
         String actual = firstVector.rotate(Math.PI / 2.0).toString();
-        String expected = new Vector(1.0, 0.0).toString();
+        String expected = new Vector(-1.0, 0.0).toString();
         assertEquals(expected, actual);
     }
 

@@ -38,7 +38,7 @@ public class Vector {
 
     @Override
     public String toString() {
-        return "Vector [i=" + this.getI() + ", j=" + this.getJ() + "]";
+        return String.format("Vector [i= %f, j= %f ]", this.getI(), this.getJ());
     }
 
     public Vector add(Vector otherVector) {
@@ -70,8 +70,12 @@ public class Vector {
     }
 
     public Vector rotateByConSin(double cos, double sin) {
-        this.setI(cos * this.getI() - sin * this.getJ());
-        this.setJ(sin * this.getI() + cos * this.getJ());
+
+        double oldI = this.getI();
+        double oldJ = this.getJ();
+
+        this.setI(cos * oldI - sin * oldJ);
+        this.setJ(sin * oldI + cos * oldJ);
         return this;
     }
 
