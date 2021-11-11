@@ -2,8 +2,7 @@ package com.example;
 
 public class Vector {
     public Vector(Point tail, Point head) {
-        this(head.getX() - tail.getX(),
-        head.getY() - tail.getY());
+        this(head.getX() - tail.getX(), head.getY() - tail.getY());
     }
 
     public Vector() {
@@ -49,30 +48,39 @@ public class Vector {
     public double dotProduct(Vector otherVector) {
         return this.getI() * otherVector.getI() + this.getJ() * otherVector.getJ();
     }
-    
+
     public Vector scalarProduct(double scalar) {
         return new Vector(this.getI() * scalar, this.getJ() * scalar);
     }
 
-    public static void rotate(Vector[] vectors, double angle) {
+    public static void rotateAll(Vector[] vectors, double angle) {
         final double cosOfAngle = Math.cos(angle);
         final double sinOfAngle = Math.cos(angle);
-        
+
         for (Vector vector : vectors) {
             vector.setI(cosOfAngle * vector.getI() + sinOfAngle * vector.getJ());
             vector.setJ(sinOfAngle * vector.getI() - cosOfAngle * vector.getJ());
         }
     }
 
+    public void rotate(double angle) {
+        final double cosOfAngle = Math.cos(angle);
+        final double sinOfAngle = Math.cos(angle);
+
+        this.setI(cosOfAngle * this.getI() + sinOfAngle * this.getJ());
+        this.setJ(sinOfAngle * this.getI() - cosOfAngle * this.getJ());
+    }
+
     public Vector vectorProjection(Vector projectionLine) {
         return projectionLine.scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
     }
-    
+
     public double getMagnitude() {
-        return Math.sqrt(this.i * this.i + this.j* this.j);
+        return Math.sqrt(this.i * this.i + this.j * this.j);
     }
 
     public static double getAngleBetween(Vector firstVector, Vector secondVector) {
-        return Math.acos(firstVector.dotProduct(secondVector) / (firstVector.getMagnitude() * secondVector.getMagnitude()));
+        return Math.acos(
+                firstVector.dotProduct(secondVector) / (firstVector.getMagnitude() * secondVector.getMagnitude()));
     }
 }
