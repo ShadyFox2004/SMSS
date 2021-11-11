@@ -55,7 +55,7 @@ public class Vector {
 
     public static void rotateAll(Vector[] vectors, double angle) {
         final double cosOfAngle = Math.cos(angle);
-        final double sinOfAngle = Math.cos(angle);
+        final double sinOfAngle = Math.sin(angle);
 
         for (Vector vector : vectors) {
             vector.setI(cosOfAngle * vector.getI() + sinOfAngle * vector.getJ());
@@ -63,12 +63,13 @@ public class Vector {
         }
     }
 
-    public void rotate(double angle) {
+    public Vector rotate(double angle) {
         final double cosOfAngle = Math.cos(angle);
-        final double sinOfAngle = Math.cos(angle);
+        final double sinOfAngle = Math.sin(angle);
 
         this.setI(cosOfAngle * this.getI() + sinOfAngle * this.getJ());
         this.setJ(sinOfAngle * this.getI() - cosOfAngle * this.getJ());
+        return this;
     }
 
     public Vector vectorProjection(Vector projectionLine) {
