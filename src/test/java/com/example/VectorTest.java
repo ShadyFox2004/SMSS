@@ -15,12 +15,17 @@ public class VectorTest {
 
     @Test
     public void testDotProduct() {
-        //Vector firstTestVector = new Vector(0.0, 1.0);
-        //Vector secondTestVector = new Vector(1.0, 0.0);
+        Vector firstVector = new Vector(0.0, 1.0);
+        Vector secondVector = new Vector(1.0, 0.0);
+        
+        double expected = 0.0;
+        double actual = firstVector.dotProduct(secondVector); 
+        assertEquals(expected, actual, 0.000001);
     }
 
     @Test
     public void testGetAngleBetween() {
+
 
     }
 
