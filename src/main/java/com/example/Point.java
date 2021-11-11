@@ -41,7 +41,6 @@ public class Point {
         for (Point point : points) {
             point.move(displacement);
         }
-        
     }
 
     @Override
