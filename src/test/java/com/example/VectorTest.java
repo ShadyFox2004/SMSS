@@ -35,12 +35,20 @@ public class VectorTest {
 
     @Test
     public void testGetMagnitude() {
-
+        Vector firstVector = new Vector(2.0, 2.0);
+        
+        double expected = Math.sqrt(8.0);
+        double actual = firstVector.getMagnitude(); 
+        assertEquals(expected, actual, 0.000001);
     }
 
     @Test
     public void testRotate() {
+        Vector firstVector = new Vector(0.0, 1.0);
 
+        String actual = firstVector.rotate(Math.PI / 2.0).toString();
+        String expected = new Vector(1.0, 0.0).toString();
+        assertEquals(expected, actual);
     }
 
     @Test
