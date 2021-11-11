@@ -47,17 +47,27 @@ public class VectorTest {
         Vector firstVector = new Vector(0.0, 1.0);
 
         String actual = firstVector.rotate(Math.PI / 2.0).toString();
-        String expected = new Vector(-1.0, 0.0).toString();
+        String expected = new Vector(-1.0,0.0).toString();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testScalarProduct() {
+        Vector vector = new Vector(1.0,1.0);
+        
+        String actual =  vector.scalarProduct(3).toString();
+        String expected = new Vector(3.0, 3.0).toString();
 
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testVectorProjection() {
-
+    public void testProject() {
+        Vector firstVector = new Vector(0.0, 1.0);
+        Vector secondVector = new Vector(1.0, 0.0);
+        
+        String actual = firstVector.projectOn(secondVector).toString();
+        String expected = new Vector(0.0,0.0).toString();
+        assertEquals(expected, actual);
     }
 }

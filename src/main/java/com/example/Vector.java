@@ -79,7 +79,7 @@ public class Vector {
         return this;
     }
 
-    public Vector vectorProjection(Vector projectionLine) {
+    public Vector projectOn(Vector projectionLine) {
         return projectionLine.scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
     }
 
