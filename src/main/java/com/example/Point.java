@@ -32,6 +32,18 @@ public class Point {
         this.y = y;
     }
 
+    public void move(Vector displacement) {
+        this.setX(this.getX() + displacement.getI());
+        this.setX(this.getY() + displacement.getJ());
+    }
+
+    public static void movePointsBy(Point[] points, Vector displacement){
+        for (Point point : points) {
+            point.move(displacement);
+        }
+        
+    }
+
     @Override
     public String toString() {
         return "Point [x=" + x + ", y=" + y + "]";
