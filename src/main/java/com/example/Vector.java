@@ -1,6 +1,11 @@
 package com.example;
 
 public class Vector {
+    public Vector(Point tail, Point head) {
+        this(head.getX() - tail.getX(),
+        head.getY() - tail.getY());
+    }
+
     public Vector() {
         this(DEFAULT_I, DEFAULT_Y);
     }
@@ -37,8 +42,6 @@ public class Vector {
         return "Vector [i=" + this.getI() + ", j=" + this.getJ() + "]";
     }
 
-    // TODO Create validators
-
     public Vector add(Vector otherVector) {
         return new Vector(this.getI() + otherVector.getI(), this.getJ() + otherVector.getJ());
     }
@@ -46,7 +49,6 @@ public class Vector {
     public double dotProduct(Vector otherVector) {
         return this.getI() * otherVector.getI() + this.getJ() * otherVector.getJ();
     }
-    
     
     public Vector scalarProduct(double scalar) {
         return new Vector(this.getI() * scalar, this.getJ() * scalar);
@@ -64,5 +66,13 @@ public class Vector {
 
     public Vector vectorProjection(Vector projectionLine) {
         return projectionLine.scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
+    }
+    
+    public double getMagnitude() {
+        return Math.sqrt(this.i * this.i + this.j* this.j);
+    }
+
+    public static double getAngleBetween(Vector firstVector, Vector secondVector) {
+        return Math.acos(firstVector.dotProduct(secondVector) / (firstVector.getMagnitude() * secondVector.getMagnitude()));
     }
 }
