@@ -2,8 +2,7 @@ package com.example;
 
 public class Vector {
     public Vector() {
-        this(DEFAULT_I,
-        DEFAULT_Y);
+        this(DEFAULT_I, DEFAULT_Y);
     }
 
     public Vector(double i, double j) {
@@ -45,8 +44,16 @@ public class Vector {
     }
 
     public double dotProduct(Vector otherVector) {
-        return this.getI()*otherVector.getI() + this.getJ()*otherVector.getJ();
+        return this.getI() * otherVector.getI() + this.getJ() * otherVector.getJ();
     }
+
+    // TODO multiply vector
+    
+    // TODO Rotate vector
+
+    // TODO Create scalar produt 
+
+    // TODO Create implement  projection
 
     // TODO Create special methods
 }

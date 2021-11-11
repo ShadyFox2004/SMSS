@@ -2,17 +2,13 @@ package com.example;
 
 public class SpaceShip {
     public SpaceShip() {
-        this(DEFAULT_TAB_MODULES,
-        DEFAULT_ANGULAR_MOMENTUM,
-        DEFAULT_LINEAR_MOMENTUM,
-        DEFAULT_CENTER_OF_MASS);
+        this(DEFAULT_TAB_MODULES, DEFAULT_ANGULAR_MOMENTUM, DEFAULT_LINEAR_MOMENTUM);
     }
-    
-    public SpaceShip(Module[] tabModules, double angularMomentum, Vector linearMomentum, CenterOfMass centerOfMass) {
+
+    public SpaceShip(Module[] tabModules, double angularMomentum, Vector linearMomentum) {
         setTabModules(tabModules);
         setAngularMomentum(angularMomentum);
         setLinearMomentum(linearMomentum);
-        setCenterOfMass(centerOfMass);
     }
 
     private Module[] tabModules;
@@ -23,15 +19,31 @@ public class SpaceShip {
     public static final Module[] DEFAULT_TAB_MODULES = new Module[0];
     public static final double DEFAULT_ANGULAR_MOMENTUM = 0;
     public static final Vector DEFAULT_LINEAR_MOMENTUM = new Vector();
-    public static final CenterOfMass DEFAULT_CENTER_OF_MASS = new CenterOfMass();
 
     public CenterOfMass getCenterOfMass() {
-
         return this.centerOfMass;
     }
 
-    private void setCenterOfMass(CenterOfMass centerOfMass) {
-        this.centerOfMass = centerOfMass;
+    public void setCenterOfMass() {
+        CenterOfMass localCenterOfMass;
+        double totalMass = 0;
+        double totalX = 0;
+        double totalY = 0;
+
+        double currentMass;
+        CenterOfMass currentCenterOfMass;
+
+        for (Module module : tabModules) {
+            currentCenterOfMass = module.getCenterOfMass();
+            currentMass = currentCenterOfMass.getMass();
+            totalX += currentCenterOfMass.getX() * currentMass;
+            totalY += currentCenterOfMass.getY() * currentMass;
+            totalMass += currentMass;
+        }
+
+        localCenterOfMass = new CenterOfMass(totalX / totalMass, totalY / totalMass, totalMass);
+
+        this.centerOfMass = localCenterOfMass;
     }
 
     public Module[] getTabModules() {
@@ -56,5 +68,16 @@ public class SpaceShip {
 
     public void setLinearMomentum(Vector linearMomentum) {
         this.linearMomentum = linearMomentum;
+    }
+
+    public void addModule(Module module) {
+        // TODO Make a better memory manager
+        Module[] newTabModules = new Module[tabModules.length + 1];
+        for (int i = 0; i < tabModules.length; i++) {
+            newTabModules[i] = tabModules[i];
+        }
+        newTabModules[newTabModules.length - 1] = module;
+        setTabModules(newTabModules);
+        setCenterOfMass();
     }
 }

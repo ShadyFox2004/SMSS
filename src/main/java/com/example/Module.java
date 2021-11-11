@@ -38,8 +38,5 @@ public class Module {
         return "Module [centerOfMass=" + centerOfMass + ", direction=" + direction + "]";
     }
 
-    public static void main(String[] args) {
-        Module myModule = new Module();
-        System.out.println(myModule);
-    }
+    // TODO Create tests
 }
