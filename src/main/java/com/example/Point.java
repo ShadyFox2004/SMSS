@@ -37,7 +37,5 @@ public class Point {
         return "Point [x=" + x + ", y=" + y + "]";
     }
 
-    // TODO Create validators
-
     // TODO Create special methods
 }

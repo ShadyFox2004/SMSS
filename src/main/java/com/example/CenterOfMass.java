@@ -39,8 +39,6 @@ public class CenterOfMass extends Point {
     }
 
     // TODO Create tests
-    
-    // TODO Create validators for mass ( NOT REALLY GOOD)
 
     public static boolean massIsValid(double mass) {
         return mass > MIN_MASS;

@@ -46,14 +46,23 @@ public class Vector {
     public double dotProduct(Vector otherVector) {
         return this.getI() * otherVector.getI() + this.getJ() * otherVector.getJ();
     }
-
-    // TODO multiply vector
     
-    // TODO Rotate vector
+    
+    public Vector scalarProduct(double scalar) {
+        return new Vector(this.getI() * scalar, this.getJ() * scalar);
+    }
 
-    // TODO Create scalar produt 
+    public static void rotate(Vector[] vectors, double angle) {
+        final double cosOfAngle = Math.cos(angle);
+        final double sinOfAngle = Math.cos(angle);
+        
+        for (Vector vector : vectors) {
+            vector.setI(cosOfAngle * vector.getI() + sinOfAngle * vector.getJ());
+            vector.setJ(sinOfAngle * vector.getI() - cosOfAngle * vector.getJ());
+        }
+    }
 
-    // TODO Create implement  projection
-
-    // TODO Create special methods
+    public Vector vectorProjection(Vector projectionLine) {
+        return projectionLine.scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
+    }
 }
