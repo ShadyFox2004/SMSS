@@ -3,7 +3,6 @@ package com.example;
 import java.util.ArrayList;
 
 public class Body {
-
     public Body() {
         this(DEFAULT_LOCAL_POSITION, DEFAULT_ANGLE, DEFAULT_PARENT);
     }
@@ -25,16 +24,20 @@ public class Body {
     private Body parent;
     private ArrayList<Body> children;
 
-    private void addChild(Body child) {
+    public void addChild(Body child) {
         children.add(child);
     }
 
-    private void removeChild(Body child) {
+    public void removeChild(Body child) {
         children.remove(child);
     }
 
+    public ArrayList<Body> getChildren() {
+        return this.children;
+    }
+
     public Point getLocalPosition() {
-        return localPosition;
+        return this.localPosition;
     }
 
     public void setLocalPosition(Point localPosition) {
@@ -42,7 +45,7 @@ public class Body {
     }
 
     public double getAngle() {
-        return angle;
+        return this.angle;
     }
 
     public void setAngle(double angle) {
@@ -50,7 +53,7 @@ public class Body {
     }
 
     public Body getParent() {
-        return parent;
+        return this.parent;
     }
 
     public void setParent(Body parent) {
