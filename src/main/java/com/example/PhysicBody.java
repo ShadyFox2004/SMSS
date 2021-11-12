@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.ArrayList;
+
 public class PhysicBody extends Body {
     private double mass;
     private static final double DEFAULT_MASS = 0.0;
@@ -57,6 +59,9 @@ public class PhysicBody extends Body {
     }
     
     public void offsetCenterOfMass(Vector displacement) {
-        
+        this.getLocalPosition().move(displacement);
+        for (Body body: super.getChildren()) {
+            body.getLocalPosition().move(displacement.getInverse());                      
+        }
     }
 }
