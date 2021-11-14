@@ -33,7 +33,24 @@ public class Moment {
         this.angular = angular;
     }
 
-    // TODO add the possibility to add moments
+    public Moment add(Moment otherMoment){
+        Moment quotient;
 
-    // TODO add the possibility to multiply moments
+        Vector linearQuotient = this.getLinear().add(otherMoment.getLinear());
+        double angularQuotient = this.getAngular() + otherMoment.getAngular();
+        quotient = new Moment(linearQuotient, angularQuotient);
+
+        return quotient;
+    }
+
+    public Moment scalar(double scalar) {
+        Moment product;
+
+        double angularProduct = this.getAngular()* scalar;
+        product = new Moment(this.getLinear().scalarProduct(scalar), angularProduct);
+
+        return product;
+    }
+
+    // TODO add toString()
 }
