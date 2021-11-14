@@ -41,7 +41,7 @@ public class Vector {
         return new Vector(this.getI() + otherVector.getI(), this.getJ() + otherVector.getJ());
     }
 
-    public Vector sub(Vector otherVector) { 
+    public Vector sub(Vector otherVector) {
         return this.add(otherVector.getInverse());
     }
 
@@ -53,15 +53,6 @@ public class Vector {
         return new Vector(this.getI() * scalar, this.getJ() * scalar);
     }
 
-    public static void rotateAll(Vector[] vectors, double angle) {
-        final double cos = Math.cos(angle);
-        final double sin = Math.sin(angle);
-
-        for (Vector vector : vectors) {
-            vector.rotateByCosSin(cos, sin);
-        }
-    }
-
     public Vector rotate(double angle) {
         final double cosOfAngle = Math.cos(angle);
         final double sinOfAngle = Math.sin(angle);
@@ -70,17 +61,13 @@ public class Vector {
     }
 
     public Vector rotateByCosSin(double cos, double sin) {
-
-        double oldI = this.getI();
-        double oldJ = this.getJ();
-
-        this.setI(cos * oldI - sin * oldJ);
-        this.setJ(sin * oldI + cos * oldJ);
-        return this;
+        return new Vector(cos * this.getI() - sin * this.getJ(),
+        sin * this.getI() + cos * this.getJ());
     }
 
     public Vector projectOn(Vector projectionLine) {
-        return projectionLine.scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
+        return projectionLine
+                .scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
     }
 
     public double getMagnitude() {
