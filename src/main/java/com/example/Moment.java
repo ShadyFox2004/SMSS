@@ -33,6 +33,11 @@ public class Moment {
         this.angular = angular;
     }
 
+    /**
+     * Adds the moment together
+     * @param otherMoment
+     * @return sum
+     */
     public Moment add(final Moment otherMoment){
         Moment sum;
 
@@ -43,6 +48,11 @@ public class Moment {
         return sum;
     }
 
+    /**
+     * Multiply the moment by a scalar
+     * @param scalar
+     * @return product
+     */
     public Moment scalar(final double scalar) {
         Moment product;
 
