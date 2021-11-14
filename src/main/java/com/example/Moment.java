@@ -52,5 +52,8 @@ public class Moment {
         return product;
     }
 
-    // TODO add toString()
+    @Override
+    public String toString() {
+        return "Moment [angular=" + angular + ", linear=" + linear + "]";
+    }
 }
