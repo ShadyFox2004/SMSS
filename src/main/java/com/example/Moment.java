@@ -6,7 +6,7 @@ public class Moment {
         this(DEFAULT_LINEAR, DEFAULT_ANGULAR);
     }
 
-    public Moment(Vector linear, double angular) {
+    public Moment(final Vector linear, final double angular) {
         this.linear = linear;
         this.angular = angular;
     }
@@ -21,7 +21,7 @@ public class Moment {
         return linear;
     }
     
-    public void setLinear(Vector linear) {
+    public void setLinear(final Vector linear) {
         this.linear = linear;
     }
 
@@ -29,24 +29,24 @@ public class Moment {
         return angular;
     }
     
-    public void setAngular(double angular) {
+    public void setAngular(final double angular) {
         this.angular = angular;
     }
 
-    public Moment add(Moment otherMoment){
+    public Moment add(final Moment otherMoment){
         Moment sum;
 
-        Vector linearSum = this.getLinear().add(otherMoment.getLinear());
-        double angularSum = this.getAngular() + otherMoment.getAngular();
+        final Vector linearSum = this.getLinear().add(otherMoment.getLinear());
+        final double angularSum = this.getAngular() + otherMoment.getAngular();
         sum = new Moment(linearSum, angularSum);
 
         return sum;
     }
 
-    public Moment scalar(double scalar) {
+    public Moment scalar(final double scalar) {
         Moment product;
 
-        double angularProduct = this.getAngular()* scalar;
+        final double angularProduct = this.getAngular()* scalar;
         product = new Moment(this.getLinear().scalarProduct(scalar), angularProduct);
 
         return product;
