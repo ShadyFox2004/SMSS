@@ -21,24 +21,43 @@ public class Moment {
     public static final Vector DEFAULT_LINEAR = new Vector();
     public static final double DEFAULT_ANGULAR = 0;
 
+    
+    /** 
+     * Get the linear moment.
+     * @return Vector
+     */
     public Vector getLinear() {
         return linear;
     }
     
+    
+    /** 
+     * Sets the linear moment
+     * @param linear
+     */
     public void setLinear(final Vector linear) {
         this.linear = linear;
     }
 
+    
+    /** 
+     * Get the angular moment.
+     * @return double
+     */
     public double getAngular() {
         return angular;
     }
     
+    /** 
+     * Sets angular moment.
+     * @param angular
+     */
     public void setAngular(final double angular) {
         this.angular = angular;
     }
 
     /**
-     * Adds the moment together
+     * Adds the moment together.
      * @param otherMoment
      * @return sum
      */
