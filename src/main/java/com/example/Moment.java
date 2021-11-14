@@ -1,5 +1,9 @@
 package com.example;
-
+/**
+ * @author ShadyFox2004
+ * A moment is grouping of behaviors;
+ * In 2d, its rotation and translations;
+ */
 public class Moment {
 
     public Moment(){
