@@ -1,10 +1,6 @@
 package com.example;
 
 public class Vector {
-    public Vector(Point tail, Point head) {
-        this(head.getX() - tail.getX(), head.getY() - tail.getY());
-    }
-
     public Vector() {
         this(DEFAULT_I, DEFAULT_Y);
     }
@@ -45,6 +41,10 @@ public class Vector {
         return new Vector(this.getI() + otherVector.getI(), this.getJ() + otherVector.getJ());
     }
 
+    public Vector sub(Vector otherVector) { 
+        return this.add(otherVector.getInverse());
+    }
+
     public double dotProduct(Vector otherVector) {
         return this.getI() * otherVector.getI() + this.getJ() * otherVector.getJ();
     }
@@ -58,7 +58,7 @@ public class Vector {
         final double sin = Math.sin(angle);
 
         for (Vector vector : vectors) {
-            vector.rotateByConSin(cos, sin);
+            vector.rotateByCosSin(cos, sin);
         }
     }
 
@@ -66,10 +66,10 @@ public class Vector {
         final double cosOfAngle = Math.cos(angle);
         final double sinOfAngle = Math.sin(angle);
 
-        return this.rotateByConSin(cosOfAngle, sinOfAngle);
+        return this.rotateByCosSin(cosOfAngle, sinOfAngle);
     }
 
-    public Vector rotateByConSin(double cos, double sin) {
+    public Vector rotateByCosSin(double cos, double sin) {
 
         double oldI = this.getI();
         double oldJ = this.getJ();
@@ -90,5 +90,9 @@ public class Vector {
     public static double getAngleBetween(Vector firstVector, Vector secondVector) {
         return Math.acos(
                 firstVector.dotProduct(secondVector) / (firstVector.getMagnitude() * secondVector.getMagnitude()));
+    }
+
+    public Vector getInverse() {
+        return this.scalarProduct(-1.0);
     }
 }
