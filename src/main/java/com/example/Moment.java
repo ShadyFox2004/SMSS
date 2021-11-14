@@ -34,13 +34,13 @@ public class Moment {
     }
 
     public Moment add(Moment otherMoment){
-        Moment quotient;
+        Moment sum;
 
-        Vector linearQuotient = this.getLinear().add(otherMoment.getLinear());
-        double angularQuotient = this.getAngular() + otherMoment.getAngular();
-        quotient = new Moment(linearQuotient, angularQuotient);
+        Vector linearSum = this.getLinear().add(otherMoment.getLinear());
+        double angularSum = this.getAngular() + otherMoment.getAngular();
+        sum = new Moment(linearSum, angularSum);
 
-        return quotient;
+        return sum;
     }
 
     public Moment scalar(double scalar) {
