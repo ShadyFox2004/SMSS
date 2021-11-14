@@ -32,4 +32,8 @@ public class Moment {
     public void setAngular(double angular) {
         this.angular = angular;
     }
+
+    // TODO add the possibility to add moments
+
+    // TODO add the possibility to multiply moments
 }

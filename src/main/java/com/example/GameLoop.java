@@ -7,7 +7,7 @@ public class GameLoop {
         Ship myShip = new Ship();
 
         while(TRUE) {
-            
+            // TODO Make the physics engine
         }
     }
 }

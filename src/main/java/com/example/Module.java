@@ -1,9 +1,13 @@
 package com.example;
 
 public class Module {
+    // TODO Create constructors
+
     private Vector position;
     private double mass;
     private double direction;
+
+    // TODO Create default parameters
 
     public Vector getPosition() {
         return position;
