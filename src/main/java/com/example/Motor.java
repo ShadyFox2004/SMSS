@@ -4,6 +4,7 @@ public class Motor extends Module {
     public Motor(Vector position, double mass, double direction, double force) {
         super(position, mass, direction);
         this.setForce(force);
+        this.setPower(10);
         //TODO Auto-generated constructor stub
     }
 
