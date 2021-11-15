@@ -56,6 +56,12 @@ public class Module {
     }
 
     public String eval(Scanner sc) {
-        return "Module found";
+        String command = sc.next();
+		if (command.equals("set")) {
+            return "set";
+        } else if (command.equals("get")) {
+            return "get";
+        }
+		return "command not found...";
     }
 }
