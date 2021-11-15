@@ -75,8 +75,12 @@ public class Vector {
     }
 
     public static double getAngleBetween(Vector firstVector, Vector secondVector) {
-        return Math.acos(
+        double answer = Math.acos(
                 firstVector.dotProduct(secondVector) / (firstVector.getMagnitude() * secondVector.getMagnitude()));
+        if(Double.NaN == answer){
+            return 0;
+        }
+        return answer;
     }
 
     public Vector getInverse() {

@@ -1,6 +1,12 @@
 package com.example;
 
 public class Ship extends Module {
+    public Ship(Vector position, double mass, double direction) {
+        super(position, mass, direction);
+        this.setChildren(new Module[0]);
+        //TODO Auto-generated constructor stub
+    }
+
     private Module[] children;
 
     public Module[] getChildren() {

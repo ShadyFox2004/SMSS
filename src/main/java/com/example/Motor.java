@@ -1,6 +1,12 @@
 package com.example;
 
 public class Motor extends Module {
+    public Motor(Vector position, double mass, double direction, double force) {
+        super(position, mass, direction);
+        this.setForce(force);
+        //TODO Auto-generated constructor stub
+    }
+
     private double force;
     private double power;
     private double consomation;

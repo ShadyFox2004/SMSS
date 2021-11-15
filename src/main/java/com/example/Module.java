@@ -3,6 +3,12 @@ package com.example;
 public class Module {
     // TODO Create constructors
 
+    public Module(Vector position, double mass, double direction) {
+        this.position = position;
+        this.mass = mass;
+        this.direction = direction;
+    }
+
     private Vector position;
     private double mass;
     private double direction;
