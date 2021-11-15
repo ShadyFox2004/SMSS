@@ -55,4 +55,6 @@ public class Ship extends Module {
 
         return impulse;
     }
+
+    // TODO Create tests
 }
