@@ -1,9 +1,12 @@
 package com.example;
 
+import java.util.Scanner;
+
 public class Module {
     // TODO Create constructors
 
-    public Module(Vector position, double mass, double direction) {
+    public Module(String id,Vector position, double mass, double direction) {
+        this.id = id;
         this.position = position;
         this.mass = mass;
         this.direction = direction;
@@ -12,10 +15,19 @@ public class Module {
     private Vector position;
     private double mass;
     private double direction;
+    private String id; 
 
     // TODO Create default parameters
 
-    public Vector getPosition() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Vector getPosition() {
         return position;
     }
 
@@ -41,5 +53,9 @@ public class Module {
 
     public Moment calculateMomentImpact(Module parent) {
         return new Moment();
+    }
+
+    public String eval(Scanner sc) {
+        return "Module found";
     }
 }

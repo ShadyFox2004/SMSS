@@ -1,8 +1,8 @@
 package com.example;
 
 public class Motor extends Module {
-    public Motor(Vector position, double mass, double direction) {
-        super(position, mass, direction);
+    public Motor(String id, Vector position, double mass, double direction) {
+        super(id ,position, mass, direction);
         this.setForce(DEFAULT_FORCE);
         this.setPower(DEFAULT_POWER);
         this.setConsomation(DEFAULT_CONSOMATION);
