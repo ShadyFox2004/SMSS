@@ -30,9 +30,9 @@ public class Motor extends Module {
     }
 
     @Override
-    public Moment calculMomentImpact(Module parent) {
+    public Moment calculateMomentImpact(Module parent) {
         // TODO Calculate Physics
         // TODO Make the context global
-        return super.calculMomentImpact(parent);
+        return super.calculateMomentImpact(parent);
     }
 }

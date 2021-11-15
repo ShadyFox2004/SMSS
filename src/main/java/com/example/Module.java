@@ -33,7 +33,7 @@ public class Module {
         this.direction = direction;
     }
 
-    public Moment calculMomentImpact(Module parent) {
+    public Moment calculateMomentImpact(Module parent) {
         return new Moment();
     }
 }
