@@ -2,8 +2,7 @@ package com.example;
 
 public class Vector {
     public Vector() {
-        this(DEFAULT_I,
-        DEFAULT_Y);
+        this(DEFAULT_I, DEFAULT_Y);
     }
 
     public Vector(double i, double j) {
@@ -35,18 +34,56 @@ public class Vector {
 
     @Override
     public String toString() {
-        return "Vector [i=" + this.getI() + ", j=" + this.getJ() + "]";
+        return String.format("Vector [i= %f, j= %f ]", this.getI(), this.getJ());
     }
-
-    // TODO Create validators
 
     public Vector add(Vector otherVector) {
         return new Vector(this.getI() + otherVector.getI(), this.getJ() + otherVector.getJ());
     }
 
-    public double dotProduct(Vector otherVector) {
-        return this.getI()*otherVector.getI() + this.getJ()*otherVector.getJ();
+    public Vector sub(Vector otherVector) {
+        return this.add(otherVector.getInverse());
     }
 
-    // TODO Create special methods
+    public double dotProduct(Vector otherVector) {
+        return this.getI() * otherVector.getI() + this.getJ() * otherVector.getJ();
+    }
+
+    public Vector scalarProduct(double scalar) {
+        return new Vector(this.getI() * scalar, this.getJ() * scalar);
+    }
+
+    public Vector rotate(double angle) {
+        final double cosOfAngle = Math.cos(angle);
+        final double sinOfAngle = Math.sin(angle);
+
+        return this.rotateByCosSin(cosOfAngle, sinOfAngle);
+    }
+
+    public Vector rotateByCosSin(double cos, double sin) {
+        return new Vector(cos * this.getI() - sin * this.getJ(),
+        sin * this.getI() + cos * this.getJ());
+    }
+
+    public Vector projectOn(Vector projectionLine) {
+        return projectionLine
+                .scalarProduct(this.dotProduct(projectionLine) / projectionLine.dotProduct(projectionLine));
+    }
+
+    public double getMagnitude() {
+        return Math.sqrt(this.i * this.i + this.j * this.j);
+    }
+
+    public static double getAngleBetween(Vector firstVector, Vector secondVector) {
+        double answer = Math.acos(
+                firstVector.dotProduct(secondVector) / (firstVector.getMagnitude() * secondVector.getMagnitude()));
+        if(Double.NaN == answer){
+            return 0;
+        }
+        return answer;
+    }
+
+    public Vector getInverse() {
+        return this.scalarProduct(-1.0);
+    }
 }

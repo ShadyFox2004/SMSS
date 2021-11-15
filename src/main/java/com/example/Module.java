@@ -1,45 +1,45 @@
 package com.example;
 
 public class Module {
-    public Module() {
-        setDirection(DEFAULT_DIRECTION);
-        setCenterOfMass(DEFAULT_CENTER_OF_MASS);
+    // TODO Create constructors
+
+    public Module(Vector position, double mass, double direction) {
+        this.position = position;
+        this.mass = mass;
+        this.direction = direction;
     }
 
-    public Module(double direction, CenterOfMass centerOfMass) {
-        setDirection(direction);
-        setCenterOfMass(centerOfMass);
-    }
-    
+    private Vector position;
+    private double mass;
     private double direction;
-    private CenterOfMass centerOfMass;
 
-    public static final double DEFAULT_DIRECTION = 0;
-    public static final CenterOfMass DEFAULT_CENTER_OF_MASS = new CenterOfMass();
+    // TODO Create default parameters
+
+    public Vector getPosition() {
+        return position;
+    }
+
+    public void setPosition(Vector position) {
+        this.position = position;
+    }
+
+    public double getMass() {
+        return mass;
+    }
+
+    public void setMass(double mass) {
+        this.mass = mass;
+    }
 
     public double getDirection() {
-        return this.direction;
+        return direction;
     }
 
     public void setDirection(double direction) {
         this.direction = direction;
     }
 
-    public CenterOfMass getCenterOfMass() {
-        return this.centerOfMass;
-    }
-
-    public void setCenterOfMass(CenterOfMass centerOfMass) {
-        this.centerOfMass = centerOfMass;
-    }
-
-    @Override
-    public String toString() {
-        return "Module [centerOfMass=" + centerOfMass + ", direction=" + direction + "]";
-    }
-
-    public static void main(String[] args) {
-        Module myModule = new Module();
-        System.out.println(myModule);
+    public Moment calculateMomentImpact(Module parent) {
+        return new Moment();
     }
 }

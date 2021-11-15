@@ -1,0 +1,21 @@
+// INITIALISATION;
+
+createSpaceShip();	|| new Ship()
+createMotor();	|| new Motor();
+createTank();	|| new Tank();
+createCockpit();	|| new Cockpit();
+
+mountMotors();
+mountTank();
+mountCockpit;
+
+// GAME LOOP;
+
+impulseAngular = getAgularImpulse(Motors, Ship);
+impulseMomentum = getMomentumImpulse(Motors, Ship);
+
+addAngularImpulseToShip(impulseAngular, Ship);
+addMomentumImpulseToShip(impulseMomentum, Ship);
+
+simulate(Ship);
+
