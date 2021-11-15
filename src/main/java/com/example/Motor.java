@@ -1,16 +1,23 @@
 package com.example;
 
+import java.util.Scanner;
+
 public class Motor extends Module {
-    public Motor(Vector position, double mass, double direction, double force) {
-        super(position, mass, direction);
-        this.setForce(force);
-        this.setPower(10);
-        //TODO Auto-generated constructor stub
+    public Motor(String id, Vector position, double mass, double direction) {
+        super(id, position, mass, direction);
+        this.setForce(DEFAULT_FORCE);
+        this.setPower(DEFAULT_POWER);
+        this.setConsomation(DEFAULT_CONSOMATION);
+        // TODO Auto-generated constructor stub
     }
 
     private double force;
     private double power;
     private double consomation;
+
+    public static final double DEFAULT_FORCE = 10;
+    public static final double DEFAULT_POWER = 0;
+    public static final double DEFAULT_CONSOMATION = 0;
 
     public double getForce() {
         return force;
@@ -45,25 +52,45 @@ public class Motor extends Module {
 
         // Thrust calculation
         double angle;
-        linearImpulse = new Vector(this.getForce()*this.getPower(),0).rotate(this.getDirection());
-        System.out.println("Motor.calculateMomentImpact()");
-        System.out.println(linearImpulse);
+        linearImpulse = new Vector(this.getForce() * this.getPower(), 0).rotate(this.getDirection());
 
+        // Rotation calculation
         Vector normal = this.getPosition().rotate(Math.PI);
-        angularImpulse = linearImpulse.projectOn(normal).getMagnitude()*this.getPosition().getMagnitude();
+        angularImpulse = linearImpulse.projectOn(normal).getMagnitude() * this.getPosition().getMagnitude();
         angle = Vector.getAngleBetween(normal, linearImpulse);
 
-        if (angle > Math.PI/2) {
+        if (angle > Math.PI / 2) {
             angularImpulse = -angularImpulse;
         }
 
-        // Torque calculation
-        //angle = Vector.getAngleBetween(this.getPosition(), linearImpulse);
-        //angularImpulse = linearImpulse.getMagnitude()*angle*this.getPosition().getMagnitude();
-        //if (Vector.getAngleBetween(this.getPosition().rotate(Math.PI), linearImpulse) > Math.PI / 2.0){
-        //    angularImpulse = -angularImpulse;
-        //}
         impact = new Moment(linearImpulse, angularImpulse);
         return impact;
+    }
+
+    @Override
+    public String eval(Scanner sc) {
+        String command = sc.next();
+        if (command.equals("set")) {
+            command = sc.next();
+            if (command.equals("thrust")) {
+                command = sc.next();
+                double thrust = Double.parseDouble(command);
+                if (thrust < 1 || thrust >= 0) {
+                    this.setPower(thrust);
+                    return (this.getId() + " thrust set to " + this.getPower());
+                }
+            } else if (command.equals("direction")) {
+                command = sc.next();
+                double direction = Double.parseDouble(command);
+                this.setDirection(direction);
+                return (this.getId() + " direction set to " + this.getDirection());
+            }
+        } else if (command.equals("get")) {
+            command = sc.next();
+            if (command.equals("thrust")) {
+                return (this.getId() + " thrust set to " + this.getPower());
+            }
+        }
+        return "command not found...";
     }
 }
