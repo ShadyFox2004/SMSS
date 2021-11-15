@@ -31,8 +31,22 @@ public class Motor extends Module {
 
     @Override
     public Moment calculateMomentImpact(Module parent) {
-        // TODO Calculate Physics
-        // TODO Make the context global
-        return super.calculateMomentImpact(parent);
+        Moment impact;
+
+        double angularImpulse;
+        Vector linearImpulse;
+
+        // Thrust calculation
+        double angle;
+        linearImpulse = new Vector(this.getForce()*this.getPower(),0).rotate(this.getDirection());
+        
+
+        // Torque calculation
+        angle = Vector.getAngleBetween(this.getPosition(), linearImpulse);
+        angularImpulse = linearImpulse.getMagnitude()*angle*this.getPosition().getMagnitude();
+
+        impact = new Moment(linearImpulse, angularImpulse);
+
+        return impact;
     }
 }
