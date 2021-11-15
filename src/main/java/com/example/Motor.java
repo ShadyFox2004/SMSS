@@ -46,14 +46,24 @@ public class Motor extends Module {
         // Thrust calculation
         double angle;
         linearImpulse = new Vector(this.getForce()*this.getPower(),0).rotate(this.getDirection());
-        
+        System.out.println("Motor.calculateMomentImpact()");
+        System.out.println(linearImpulse);
+
+        Vector normal = this.getPosition().rotate(Math.PI);
+        angularImpulse = linearImpulse.projectOn(normal).getMagnitude()*this.getPosition().getMagnitude();
+        angle = Vector.getAngleBetween(normal, linearImpulse);
+
+        if (angle > Math.PI/2) {
+            angularImpulse = -angularImpulse;
+        }
 
         // Torque calculation
-        angle = Vector.getAngleBetween(this.getPosition(), linearImpulse);
-        angularImpulse = linearImpulse.getMagnitude()*angle*this.getPosition().getMagnitude();
-
+        //angle = Vector.getAngleBetween(this.getPosition(), linearImpulse);
+        //angularImpulse = linearImpulse.getMagnitude()*angle*this.getPosition().getMagnitude();
+        //if (Vector.getAngleBetween(this.getPosition().rotate(Math.PI), linearImpulse) > Math.PI / 2.0){
+        //    angularImpulse = -angularImpulse;
+        //}
         impact = new Moment(linearImpulse, angularImpulse);
-
         return impact;
     }
 }
