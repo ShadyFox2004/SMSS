@@ -64,8 +64,8 @@ public class Moment {
     public Moment add(final Moment otherMoment){
         Moment sum;
 
-        final Vector linearSum = this.getLinear().add(otherMoment.getLinear());
-        final double angularSum = this.getAngular() + otherMoment.getAngular();
+        Vector linearSum = this.getLinear().add(otherMoment.getLinear());
+        double angularSum = this.getAngular() + otherMoment.getAngular();
         sum = new Moment(linearSum, angularSum);
 
         return sum;

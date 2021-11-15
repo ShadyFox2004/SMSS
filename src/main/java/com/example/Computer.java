@@ -20,12 +20,23 @@ public class Computer extends Module {
 				System.out.println(module.eval(sc));
 			} else {
 				System.out.println("Module id not found");
+				return true;
 			}
-		} else if(command.equals("exit")) {
+		} else if (command.equals("exit")) {
 			System.out.println("Exiting the space ship");
 			return false;
+		} else if (command.equals("simulate")) {
+			command = sc.next();
+			if (command.equals("impulse")) {
+				Moment moment = parent.getImpulse();
+				System.out.println(moment);
+			}
+		} else if (command.equals("run")) {
+			command = sc.next();
+			double seconds = Double.parseDouble(command);
+			parent.computePhysics(seconds);
+			System.out.println("Running time for : " + seconds + " sec");	
 		}
-
 		return true;
 	}
 }
