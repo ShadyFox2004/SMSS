@@ -28,7 +28,7 @@ public class Module {
 	}
 
 	public Vector getPosition() {
-        return position;
+        return this.position;
     }
 
     public void setPosition(Vector position) {

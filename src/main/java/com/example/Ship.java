@@ -54,12 +54,12 @@ public class Ship extends Module {
         this.setMass(0);
 
         for (Module module : children) {
-            centerOfMass.add(module.getPosition().scalarProduct(module.getMass()));
+            centerOfMass = centerOfMass.add(module.getPosition().scalarProduct(module.getMass()));
             this.setMass(this.getMass() + module.getMass());
         }
 
         
-        centerOfMass = centerOfMass.scalarProduct(1 / this.getMass());
+        centerOfMass = centerOfMass.divideByScalar(this.getMass());
 
         for (Module module : children) {
             module.setPosition(module.getPosition().sub(centerOfMass));

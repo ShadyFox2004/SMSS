@@ -53,6 +53,10 @@ public class Vector {
         return new Vector(this.getI() * scalar, this.getJ() * scalar);
     }
 
+    public Vector divideByScalar(double scalar) {
+        return new Vector(this.getI() / scalar, this.getJ() / scalar);
+    }
+
     public Vector rotate(double angle) {
         final double cosOfAngle = Math.cos(angle);
         final double sinOfAngle = Math.sin(angle);
