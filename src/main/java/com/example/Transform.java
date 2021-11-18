@@ -23,15 +23,21 @@ public class Transform {
     Transform parent;
     ArrayList<Transform> children;
 
-    void setLocalPos(Vector localPosition) {
+    public oid setLocalPos(Vector localPosition) {
         this.position = localPosition;
     }
 
-    //TODO: Implement setGlobalPosition(Vector position)
+    public void setGlobalPosition(Vector globalPosition) {
+        this.position = globalPosition.sub(parent.getGlobalPosition());
+    }
 
     //TODO: Implement setLocalRotation(double angle)
 
     //TODO: Implement setGlobalRotation(double angle)
+
+    public void setGlobalRotation(double globalAngle) {
+        this.angle = globalAngle - parent.getGlobalRotation();
+    }
 
     //TODO: Implement transformLocalToGlobalPoint(Vector point)
 
@@ -51,11 +57,15 @@ public class Transform {
 
     //TODO: Implement getLocalPosition()
 
-    //TODO: Implement getGlobalPosition
+    public Vector getGlobalPosition() {
+        return (parent == null ? Vector.ZERO : parent.getGlobalPosition()).add(this.position);
+    }
 
     //TODO: Implement getLocalRotation
 
-    //TODO: Implement getGlobalRotation
+    public Double getGlobalRotation() {
+        return (parent == null ? 0.0 : parent.getGlobalRotation()) + this.angle;
+    }
 
     //TODO: Implement setParent(Transform parent)
 
