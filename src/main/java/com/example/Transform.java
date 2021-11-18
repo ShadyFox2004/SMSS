@@ -7,10 +7,10 @@ public class Transform {
     }
 
     public Transform(Vector position, double angle, Transform parent, ArrayList<Transform> children) {
-        this.position = position;
-        this.angle = angle;
-        this.parent = parent;
-        this.children = children;
+        setLocalPosition(position);
+        setLocalRotation(angle);
+        setParent(parent);
+        setChildren(children);
     }
 
     public static final Vector DEFAULT_POSITION = new Vector(0.0, 0.0);
@@ -18,12 +18,12 @@ public class Transform {
     public static final Transform DEFAULT_PARENT = null;
     public static final ArrayList<Transform> DEFAULT_CHILDREN = new ArrayList<Transform>(0);
 
-    Vector position;
-    Double angle;
-    Transform parent;
-    ArrayList<Transform> children;
+    private Vector position;
+    private Double angle;
+    private Transform parent;
+    private ArrayList<Transform> children;
 
-    public void setLocalPos(Vector localPosition) {
+    public void setLocalPosition(Vector localPosition) {
         this.position = localPosition;
     }
 
@@ -64,7 +64,7 @@ public class Transform {
     }
 
     public Vector getGlobalPosition() {
-        return (parent == null ? Vector.ZERO : parent.getGlobalPosition()).add(this.position);
+        return (parent == null ? Vector.ZERO : parent.getGlobalPosition().rotate(-parent.angle)).add(this.position);
     }
 
     public Double getLocalRotation() {
@@ -83,15 +83,21 @@ public class Transform {
         return this.parent;
     }
 
+    public void setChildren(ArrayList<Transform> children) {
+       this.children = children;
+    }
+
     public ArrayList<Transform> getChildren() {
         return children;
     }
 
     public void addChild(Transform child) {
+        child.setParent(this);
         this.children.add(child);
     }
 
     public void removeChildren(Transform child) {
+        child.setParent(null);
         this.children.remove(child);
     }
 
