@@ -3,4 +3,3 @@ target/classes/com/example/Computer.class
 target/classes/com/example/GameLoop.class
 target/classes/com/example/Module.class
 target/classes/com/example/Ship.class
-.gitignore
