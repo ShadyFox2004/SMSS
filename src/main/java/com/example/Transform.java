@@ -92,6 +92,15 @@ public class Transform {
         return this.parent;
     }
 
+    public void setChild(int index, Transform child) {
+        if (child == null) {
+            System.err.println("Could not set child at Index: " + index + ", because it was null");
+        } else {
+            child.parent = this;
+            children.set(index, child);
+        }
+    }
+
     public void setChildren(ArrayList<Transform> children) {
        this.children = children;
     }
