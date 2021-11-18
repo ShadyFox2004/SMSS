@@ -23,5 +23,49 @@ public class Transform {
     Transform parent;
     ArrayList<Transform> children;
 
-    
+    void setLocalPos(Vector localPosition) {
+        this.position = localPosition;
+    }
+
+    //TODO: Implement setGlobalPosition(Vector position)
+
+    //TODO: Implement setLocalRotation(double angle)
+
+    //TODO: Implement setGlobalRotation(double angle)
+
+    //TODO: Implement transformLocalToGlobalPoint(Vector point)
+
+    //TODO: Implement transformLocalToGlobalVector(Vector vector)
+
+    //TODO: Implement transformLocalToGlobalDirection(Vector direction)
+
+    //TODO: Implement transformGlobalToLocalPoint(Vector point)
+
+    //TODO: Implement transformGlobalToLocalVector(Vector vector)
+
+    //TODO: Implement transformGlobalToLocalDirection(Vector direction)
+
+    //TODO: Implement rotate(double angle)
+
+    //TODO: Implement move(Vector displacement)
+
+    //TODO: Implement getLocalPosition()
+
+    //TODO: Implement getGlobalPosition
+
+    //TODO: Implement getLocalRotation
+
+    //TODO: Implement getGlobalRotation
+
+    //TODO: Implement setParent(Transform parent)
+
+    //TODO: Implement getParent
+
+    //TODO: Implement getChildren
+
+    //TODO: Implement addChildren(Transform parent)
+
+    //TODO: Implement removeChildren(Transform parent)
+
+    //TODO: Implement getChild(int index)
 }
