@@ -64,7 +64,13 @@ public class Transform {
     }
 
     public Vector getGlobalPosition() {
-        return (parent == null ? Vector.ZERO : parent.getGlobalPosition().rotate(-parent.angle)).add(this.position);
+        Vector globalPosition;
+        if (parent == null)
+            globalPosition = this.position;
+        else
+            globalPosition = parent.getGlobalPosition().add(this.position.rotate(parent.getGlobalRotation()));
+
+        return globalPosition;
     }
 
     public Double getLocalRotation() {
@@ -76,6 +82,9 @@ public class Transform {
     }
 
     public void setParent(Transform parent) {
+        //if (null != parent) {
+            //parent.addChild(this);
+        //}
         this.parent = parent;
     }
 
