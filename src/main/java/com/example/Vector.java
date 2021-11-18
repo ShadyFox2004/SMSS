@@ -16,6 +16,12 @@ public class Vector {
     public static final double DEFAULT_I = 0;
     public static final double DEFAULT_Y = 0;
 
+    public static final Vector ZERO = new Vector(0.0, 0.0);
+    public static final Vector UP = new Vector(0.0, 1.0);
+    public static final Vector DOWN = new Vector(0.0, -1.0);
+    public static final Vector RIGHT = new Vector(1.0, 10.0);
+    public static final Vector LEFT = new Vector(-1.0, 0.0);
+
     public double getI() {
         return i;
     }
