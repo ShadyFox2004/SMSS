@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Transform {
     
     public Transform() {
-        this(DEFAULT_POSITION, DEFAULT_ANGLE, DEFAULT_PARENT, DEFAULT_CHILDREN);
+        this(DEFAULT_POSITION, DEFAULT_ANGLE, DEFAULT_PARENT, new ArrayList<Transform>(0));
     }
 
     public Transform(Vector position, double angle, Transform parent, ArrayList<Transform> children) {
@@ -16,12 +16,29 @@ public class Transform {
     public static final Vector DEFAULT_POSITION = Vector.ZERO;
     public static final Double DEFAULT_ANGLE = 0.0;
     public static final Transform DEFAULT_PARENT = null;
-    public static final ArrayList<Transform> DEFAULT_CHILDREN = new ArrayList<Transform>(0);
 
     private Vector position = DEFAULT_POSITION;
     private Double angle = DEFAULT_ANGLE;
     private Transform parent = DEFAULT_PARENT;
-    private ArrayList<Transform> children = DEFAULT_CHILDREN;
+    private ArrayList<Transform> children = new ArrayList<Transform>(0);
+
+    @Override
+    public String toString() {
+        String string = "Position: " + position.toString() + ", Angle: " + angle.toString() + ", Parent: " + (parent == null ? "No parent" : parent.getClass().getName() + '@' + Integer.toHexString(parent.hashCode())) + ", Child: ";
+
+        if (children == null || children.size() == 0) {
+            string += "No children";
+        } else {
+            string += '{';
+            for (int i = 0; i < children.size(); i++) {
+                string += i == 0 ? "" : ", ";
+                string += children.get(i).getClass().getName() + '@' + Integer.toHexString(children.get(i).hashCode());
+            }
+            string += '}';
+        }
+
+        return string;
+    }
 
     public void setLocalPosition(Vector localPosition) {
         this.position = localPosition;
@@ -125,5 +142,13 @@ public class Transform {
 
     public Transform getChild(int index) {
         return children.get(index);
+    }
+
+    public static void main(String[] args) {
+        Transform t1 = new Transform();
+        Transform t2 = new Transform();
+        t1.setParent(t2);
+        System.out.println(t1);
+        System.out.println(t2);
     }
 }
