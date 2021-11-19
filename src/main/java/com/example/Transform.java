@@ -143,12 +143,4 @@ public class Transform {
     public Transform getChild(int index) {
         return children.get(index);
     }
-
-    public static void main(String[] args) {
-        Transform t1 = new Transform();
-        Transform t2 = new Transform();
-        t1.setParent(t2);
-        System.out.println(t1);
-        System.out.println(t2);
-    }
 }
